@@ -9,7 +9,6 @@ import { RouterOutlet } from '@angular/router';
 
     <router-outlet />
   `,
-  styles: [],
 })
 export class App {
   protected readonly title = signal('ng-sherlock-app');
