@@ -11,14 +11,30 @@ import { User } from './user';
 })
 export class AppComponent implements OnInit {
   users : User[] = USERS;
+  selectedUser : User | undefined
 
   ngOnInit(): void {
       console.table(this.users);
   }
 
-  selectUser(event : MouseEvent) {
-    const index:number = +(event.target as HTMLInputElement).value;
-    const fullName: string = `${this.users[index].firstName} ${this.users[index].lastName}`
-    console.log(`You have clicked on ${fullName}`)
+  selectUser(userId : string) {
+    const user : User | undefined = this.users.find(user => user.id == +userId);
+    this.selectedUser = user;
+
+    if (user)
+    {
+        console.log(`You have clicked on ${this.buildFullName(user)}`);
+    }
+    else
+    {
+      console.log(`No user is selected`);
+    }
+  }
+
+  buildFullName(user : User | undefined) : string
+  {
+    if (!user) return "undefined"
+
+    return `${user.firstName} ${user.lastName}`;
   }
 }
