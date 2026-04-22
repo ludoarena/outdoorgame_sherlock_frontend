@@ -14,10 +14,11 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
       console.table(this.users);
-      this.selectUser(this.users[0])
   }
 
-  selectUser(user : User) {
-    console.log(`You have clicked on ${user.firstName} ${user.lastName}`)
+  selectUser(event : MouseEvent) {
+    const index:number = +(event.target as HTMLInputElement).value;
+    const fullName: string = `${this.users[index].firstName} ${this.users[index].lastName}`
+    console.log(`You have clicked on ${fullName}`)
   }
 }
