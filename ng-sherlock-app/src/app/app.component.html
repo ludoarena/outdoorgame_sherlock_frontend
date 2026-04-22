@@ -1,8 +1,8 @@
 <h1>List of users</h1>
 
-<p>{{ users[0].lastName }}</p>
-<p>{{ users[1].lastName }}</p>
-<p>{{ users[2].lastName }}</p>
-<p>{{ users[3].lastName }}</p>
+<p (click)="selectUser(users[0])">{{ users[0].lastName }}</p>
+<p (click)="selectUser(users[1])">{{ users[1].lastName }}</p>
+<p (click)="selectUser(users[2])">{{ users[2].lastName }}</p>
+<p (click)="selectUser(users[3])">{{ users[3].lastName }}</p>
 
 <router-outlet />
