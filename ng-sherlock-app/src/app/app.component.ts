@@ -17,5 +17,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
       console.table(this.users);
+      this.selectUser(this.users[0])
+  }
+
+  selectUser(userName : string) {
+    console.log(`You have clicked on ${userName}`)
   }
 }
