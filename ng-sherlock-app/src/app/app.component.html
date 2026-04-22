@@ -1,6 +1,8 @@
 <h1>List of users</h1>
 
-<input type="number" (click)="selectUser($event)" />
+<input #input (keyup)="(0)" type="number" (click)="selectUser($event)" />
+
+<p>{{ input.value }}</p>
 
 <p>{{ users[0].lastName }}</p>
 <p>{{ users[1].lastName }}</p>
