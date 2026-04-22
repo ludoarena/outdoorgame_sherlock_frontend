@@ -7,11 +7,7 @@ import { User } from './user';
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
-  template: `
-    <h1>List of users</h1>
-
-    <router-outlet />
-  `,
+  templateUrl: 'app.component.html',
 })
 export class AppComponent implements OnInit {
   users : User[] = USERS;
