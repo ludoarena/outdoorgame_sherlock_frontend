@@ -3,14 +3,13 @@
 <input #input (keyup.enter)="selectUser(input.value)" type="number" />
 
 @if (selectedUser) {
-  <p>{{ `You have selected the user: ${buildFullName(selectedUser)}` }}</p>
+  <p>You have selected the user: {{ buildFullName(selectedUser) }}</p>
 } @else {
   <p>No user has been found</p>
 }
 
-<p>{{ users[0].lastName }}</p>
-<p>{{ users[1].lastName }}</p>
-<p>{{ users[2].lastName }}</p>
-<p>{{ users[3].lastName }}</p>
+@for (user of users; track user.id) {
+  <p>{{ buildFullName(user) }}</p>
+}
 
 <router-outlet />
