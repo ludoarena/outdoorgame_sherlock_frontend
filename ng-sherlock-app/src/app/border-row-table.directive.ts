@@ -4,18 +4,22 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
   selector: '[userBorderRowTable]',
 })
 export class BorderRowTable {
+
+  private initialColor : string = "#f5f5f5";
+  private defaultColor : string = "#009688";
+
   constructor(private el : ElementRef) {
-    this.setBorder("#f5f5f5");
+    this.setBorder(this.initialColor);
   }
 
   @Input('userBorderRowTable') borderColor?: string;
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.setBorder(this.borderColor || '#009688');
+    this.setBorder(this.borderColor || this.defaultColor);
   }
 
   @HostListener('mouseleave') onMouseLeave() {
-    this.setBorder('#f5f5f5');
+    this.setBorder(this.initialColor);
   }
 
   setBorder(color : string) {
