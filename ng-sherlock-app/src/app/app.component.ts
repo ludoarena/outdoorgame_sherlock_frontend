@@ -2,11 +2,12 @@ import { Component, signal, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { USERS } from './mock-users';
 import { User } from './user';
+import { BorderRowTable } from "./border-row-table.directive";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, BorderRowTable],
   templateUrl: 'app.component.html',
   styleUrl : 'app.component.css'
 })
