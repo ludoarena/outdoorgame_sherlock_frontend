@@ -3,11 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { USERS } from './mock-users';
 import { User } from './user';
 import { BorderRowTable } from "./border-row-table.directive";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, BorderRowTable],
+  imports: [RouterOutlet, BorderRowTable, CommonModule],
   templateUrl: 'app.component.html',
   styleUrl : 'app.component.css'
 })

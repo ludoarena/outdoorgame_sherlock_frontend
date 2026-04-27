@@ -22,8 +22,8 @@
     @for (user of users; track user.id) {
       <tr (click)="selectUser(user.id.toString())" [class.selected]="selectedUser?.id === user.id">
         <td>{{ user.id }}</td>
-        <td>{{ user.lastName }}</td>
-        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName.toLowerCase() | titlecase }}</td>
+        <td>{{ user.firstName.toLowerCase() | titlecase }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.isAdmin ? 'Yes' : 'No' }}</td>
       </tr>
