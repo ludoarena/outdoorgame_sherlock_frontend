@@ -1,0 +1,30 @@
+<input #input (keyup.enter)="selectUser(input.value)" type="number" />
+
+@if (selectedUser) {
+  <p>You have selected the user: {{ buildFullName(selectedUser) }}</p>
+} @else {
+  <p>No user has been found</p>
+}
+
+<table userBorderRowTable>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th>Email</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (user of users; track user.id) {
+      <tr (click)="selectUser(user.id.toString())" [class.selected]="selectedUser?.id === user.id">
+        <td>{{ user.id }}</td>
+        <td>{{ user.lastName.toLowerCase() | titlecase }}</td>
+        <td>{{ user.firstName.toLowerCase() | titlecase }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.isAdmin ? 'Yes' : 'No' }}</td>
+      </tr>
+    }
+  </tbody>
+</table>
