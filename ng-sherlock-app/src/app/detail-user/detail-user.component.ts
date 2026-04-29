@@ -26,7 +26,7 @@ export class DetailUserComponent implements OnInit {
       }
   }
 
-  goBack(): void {
+  goToUsersPage(): void {
     this.router.navigate(['/users']);
   }
 }

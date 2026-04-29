@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 import { USERS } from '../model/mock-users';
 import { User } from '../model//user';
 import { BorderRowTable } from "./border-row-table.directive";
@@ -12,7 +13,10 @@ import { BorderRowTable } from "./border-row-table.directive";
   styleUrl: './list-user.component.css',
 })
 export class ListUserComponent implements OnInit {
-users : User[] = USERS;
+
+  constructor(private router : Router) {}
+
+  users : User[] = USERS;
   selectedUser : User | undefined
 
   ngOnInit(): void {
@@ -38,5 +42,10 @@ users : User[] = USERS;
     if (!user) return "undefined"
 
     return `${user.firstName} ${user.lastName}`;
+  }
+
+  goToUserPage(user : User)
+  {
+    this.router.navigate(['/users', user.id]);
   }
 }

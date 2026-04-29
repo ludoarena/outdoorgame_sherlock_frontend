@@ -24,6 +24,9 @@
         <td>{{ user.firstName.toLowerCase() | titlecase }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.isAdmin ? 'Yes' : 'No' }}</td>
+        <td>
+          <button (click)="goToUserPage(user); $event.stopPropagation()">Voir</button>
+        </td>
       </tr>
     }
   </tbody>
