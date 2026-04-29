@@ -1,1 +1,13 @@
-<p>detail-user works!</p>
+<div>
+  @if (user) {
+    <h2>{{ user.firstName }} {{ user.lastName }}</h2>
+
+    <p><strong>ID :</strong> {{ user.id }}</p>
+    <p><strong>Prénom :</strong> {{ user.firstName }}</p>
+    <p><strong>Nom :</strong> {{ user.lastName }}</p>
+    <p><strong>Email :</strong> {{ user.email }}</p>
+    <p><strong>Rôle :</strong> {{ user.isAdmin ? 'Administrateur' : 'Utilisateur' }}</p>
+  } @else {
+    <p>Utilisateur introuvable.</p>
+  }
+</div>
