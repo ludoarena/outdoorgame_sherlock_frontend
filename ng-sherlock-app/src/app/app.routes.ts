@@ -16,4 +16,8 @@ export const routes: Routes = [
     redirectTo: 'users',
     pathMatch: 'full',
   },
+  {
+    path: "**",
+    loadComponent: () => import('./page-not-found/page-not-found.component').then(m => m.PageNotFoundComponent),
+  }
 ];
