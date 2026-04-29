@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 import { USERS } from '../model/mock-users';
 import { User } from '../model/user';
 
@@ -8,9 +8,11 @@ import { User } from '../model/user';
   standalone: true,
   imports: [],
   templateUrl: './detail-user.component.html',
-  styles: [],
+  styleUrl: './detail-user.component.css',
 })
 export class DetailUserComponent implements OnInit {
+  constructor(private router: Router) {}
+
   @Input() id!: string;
 
   users : User[] | undefined;
@@ -22,5 +24,9 @@ export class DetailUserComponent implements OnInit {
       {
         this.user = this.users.find(user => user.id === +this.id);
       }
+  }
+
+  goBack(): void {
+    this.router.navigate(['/users']);
   }
 }
