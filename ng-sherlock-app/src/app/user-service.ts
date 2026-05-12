@@ -14,4 +14,18 @@ export class UserService {
   getUserById(userId : number) : User|undefined {
     return USERS.find(user => user.id == userId);
   }
+
+  updateUser(updatedUser: User): void {
+
+    const index = USERS.findIndex(
+      user => user.id === updatedUser.id
+    );
+
+    if (index !== -1) {
+      USERS[index] = updatedUser;
+    }
+}
+
+
+
 }

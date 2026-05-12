@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -7,7 +7,6 @@ import {
   ReactiveFormsModule
 } from '@angular/forms';
 import { User } from "../model/user";
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-form',
@@ -20,10 +19,11 @@ import { Router } from '@angular/router';
 })
 export class UserFormComponent implements OnInit {
   @Input() user! : User;
+  @Output() formSubmitted = new EventEmitter<Partial<User>>();
 
   userForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router : Router) {}
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
 
@@ -50,14 +50,11 @@ export class UserFormComponent implements OnInit {
   }
 
   save(): void {
-    console.log("Submit form");
-
     if (this.userForm.invalid) {
       this.userForm.markAllAsTouched();
       return;
     }
 
-    console.log(this.userForm.value);
-    this.router.navigate(['/users', this.user.id]);
+    this.formSubmitted.emit(this.userForm.value);
   }
 }
