@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
@@ -6,27 +6,24 @@ import {
   Validators,
   ReactiveFormsModule
 } from '@angular/forms';
+import { User } from "../model/user";
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-user-edit',
+  selector: 'app-user-form',
   standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule
   ],
-  templateUrl: './user-edit.component.html'
+  templateUrl: './user-form.component.html'
 })
-export class UserEditComponent implements OnInit {
+export class UserFormComponent implements OnInit {
+  @Input() user! : User;
 
   userForm!: FormGroup;
 
-  user = {
-    firstName: 'John',
-    lastName: 'Doe',
-    email: 'john@demo.com'
-  };
-
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private router : Router) {}
 
   ngOnInit(): void {
 
@@ -53,6 +50,7 @@ export class UserEditComponent implements OnInit {
   }
 
   save(): void {
+    console.log("Submit form");
 
     if (this.userForm.invalid) {
       this.userForm.markAllAsTouched();
@@ -60,5 +58,6 @@ export class UserEditComponent implements OnInit {
     }
 
     console.log(this.userForm.value);
+    this.router.navigate(['/users', this.user.id]);
   }
 }

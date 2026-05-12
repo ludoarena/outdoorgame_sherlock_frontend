@@ -14,7 +14,7 @@ export const routes: Routes = [
   {
     path: 'users/:id/edit',
     loadComponent: () =>
-      import('./user-form/user-edit.component').then(m => m.UserEditComponent),
+      import('./edit-user/edit-user.component').then(m => m.EditUserComponent),
   },
   {
     path: '',
