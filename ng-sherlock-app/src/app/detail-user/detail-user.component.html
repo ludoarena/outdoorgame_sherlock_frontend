@@ -7,6 +7,8 @@
     <p><strong>Nom :</strong> {{ user.lastName }}</p>
     <p><strong>Email :</strong> {{ user.email }}</p>
     <p><strong>Rôle :</strong> {{ user.isAdmin ? 'Administrateur' : 'Utilisateur' }}</p>
+
+    <button (click)="goToEditPage()">Edit</button>
   } @else {
     <p>Utilisateur introuvable.</p>
   }

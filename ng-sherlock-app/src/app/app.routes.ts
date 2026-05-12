@@ -12,6 +12,11 @@ export const routes: Routes = [
       import('./detail-user/detail-user.component').then(m => m.DetailUserComponent),
   },
   {
+    path: 'users/:id/edit',
+    loadComponent: () =>
+      import('./user-form/user-edit.component').then(m => m.UserEditComponent),
+  },
+  {
     path: '',
     redirectTo: 'users',
     pathMatch: 'full',

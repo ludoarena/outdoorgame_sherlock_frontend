@@ -1,0 +1,33 @@
+<form [formGroup]="userForm" (ngSubmit)="save()">
+  <div>
+    <label>Prénom</label>
+
+    <input type="text" formControlName="firstName" />
+
+    @if (userForm.get('firstName')?.invalid && userForm.get('firstName')?.touched) {
+      <small> Prénom obligatoire </small>
+    }
+  </div>
+
+  <div>
+    <label>Nom</label>
+
+    <input type="text" formControlName="lastName" />
+
+    @if (userForm.get('lastName')?.invalid && userForm.get('lastName')?.touched) {
+      <small> Nom obligatoire </small>
+    }
+  </div>
+
+  <div>
+    <label>Email</label>
+
+    <input type="email" formControlName="email" />
+
+    @if (userForm.get('email')?.invalid && userForm.get('email')?.touched) {
+      <small> Email invalide </small>
+    }
+  </div>
+
+  <button type="submit">Sauvegarder</button>
+</form>

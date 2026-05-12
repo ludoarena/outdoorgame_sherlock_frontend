@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
-import { USERS } from '../model/mock-users';
 import { User } from '../model//user';
 import { BorderRowTable } from "./border-row-table.directive";
+import { UserService } from '../user-service';
 
 @Component({
   selector: 'app-list-user',
@@ -14,17 +14,18 @@ import { BorderRowTable } from "./border-row-table.directive";
 })
 export class ListUserComponent implements OnInit {
 
-  constructor(private router : Router) {}
+  users? : User[];
+  selectedUser? : User;
 
-  users : User[] = USERS;
-  selectedUser : User | undefined
+  constructor(private router : Router, private userService : UserService) {}
 
   ngOnInit(): void {
-      console.table(this.users);
+    this.users = this.userService.getUsers();
+    console.table(this.users);
   }
 
   selectUser(userId : string) {
-    const user : User | undefined = this.users.find(user => user.id == +userId);
+    const user : User | undefined = this.users?.find(user => user.id == +userId);
     this.selectedUser = user;
 
     if (user)

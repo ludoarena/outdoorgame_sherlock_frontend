@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { USERS } from '../model/mock-users';
 import { User } from '../model/user';
+import { UserService } from '../user-service';
 
 @Component({
   selector: 'app-detail-user',
@@ -11,22 +11,24 @@ import { User } from '../model/user';
   styleUrl: './detail-user.component.css',
 })
 export class DetailUserComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private userService : UserService) {}
 
   @Input() id!: string;
 
-  users : User[] | undefined;
-  user : User | undefined;
+  user? : User;
 
   ngOnInit(): void {
-      this.users = USERS;
       if (this.id)
       {
-        this.user = this.users.find(user => user.id === +this.id);
+        this.user = this.userService.getUserById(+this.id);
       }
   }
 
   goToUsersPage(): void {
     this.router.navigate(['/users']);
   }
+
+  goToEditPage(): void {
+    this.router.navigate(['/users', this.id, 'edit']);
+  } 
 }
