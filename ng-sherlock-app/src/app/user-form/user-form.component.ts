@@ -30,19 +30,30 @@ export class UserFormComponent implements OnInit {
     this.userForm = this.fb.group({
       firstName: [
         this.user.firstName,
-        [Validators.required]
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(50),
+          Validators.pattern(/^[a-zA-ZÀ-ÿ\s\-']+$/)  // Letters, accents, spaces, hyphens, apostrophes
+        ]
       ],
 
       lastName: [
         this.user.lastName,
-        [Validators.required]
+        [
+          Validators.required,
+          Validators.minLength(2),
+          Validators.maxLength(50),
+          Validators.pattern(/^[a-zA-ZÀ-ÿ\s\-']+$/)  // Letters, accents, spaces, hyphens, apostrophes
+        ]
       ],
 
       email: [
         this.user.email,
         [
           Validators.required,
-          Validators.email
+          Validators.email,
+          Validators.maxLength(100)
         ]
       ]
     });
