@@ -20,8 +20,10 @@ export class ListUserComponent implements OnInit {
   constructor(private router : Router, private userService : UserService) {}
 
   ngOnInit(): void {
-    this.users = this.userService.getUsers();
-    console.table(this.users);
+      this.userService.getUsers().subscribe(users => {
+      this.users = users;
+      console.table(users);
+    });
   }
 
   selectUser(userId : string) {

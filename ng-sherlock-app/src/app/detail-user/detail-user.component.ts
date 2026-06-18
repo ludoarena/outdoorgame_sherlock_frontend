@@ -20,7 +20,9 @@ export class DetailUserComponent implements OnInit {
   ngOnInit(): void {
       if (this.id)
       {
-        this.user = this.userService.getUserById(+this.id);
+        this.userService.getUserById(+this.id).subscribe(user => {
+          this.user = user;
+        });
       }
   }
 
